@@ -1,0 +1,48 @@
+<form (submit)="onRegisterSubmit()">
+
+    <h1>Sign Up</h1>
+
+    <fieldset>
+        <legend><span class="number">1</span>Your basic info</legend>
+        <label>Login:</label>
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Login" />
+
+
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="email" name="email" placeholder="Email" />
+
+        <label>Password:</label>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
+    </fieldset>
+
+
+    <fieldset>
+        <legend><span class="number">2</span>Your profile</legend>
+
+        <label>FirstName:</label>
+        <input type="text" [(ngModel)]="name" name="name" placeholder="FisrtName" />
+        <label>LastName:</label>
+        <input type="text" [(ngModel)]="LastName" name="LastName" placeholder="LastName" />
+        <label>Birth Date:</label>
+        <input type="datetime" [(ngModel)]="BirthDate" name="BirthDate" placeholder="Birthdate" />
+        <label>Job:</label>
+        <input type="text" [(ngModel)]="Job" name="Job" placeholder="Job" />
+    </fieldset>
+    <fieldset>
+        <legend><span class="number">3</span>Your Coordinates</legend>
+        <label>Country:</label>
+        <input type="text" [(ngModel)]="Country" name="Country" placeholder="Country" />
+        <label>City:</label>
+        <input type="text" [(ngModel)]="City" name="City" placeholder="City" />
+        <label>GSM:</label>
+        <input type="text" [(ngModel)]="GSM" name="GSM" placeholder="Phone" />
+        <label>Home Phone:</label>
+        <input type="text" [(ngModel)]="HomePhone" name="HomePhone" placeholder="HomePhone" />
+        <label>ZipCode:</label>
+        <input type="text" [(ngModel)]="ZipCode" name="ZipCode" placeholder="Zip/Post Code" />
+
+
+
+    </fieldset>
+    <button type="submit" name="submit">Sign Up</button>
+</form>

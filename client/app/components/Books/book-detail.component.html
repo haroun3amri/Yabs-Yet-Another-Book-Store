@@ -1,0 +1,50 @@
+<div class='panel panel-primary' *ngIf='book'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + book.title}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-3'>Title:</div>
+                    <div class='col-md-6'>{{book.title}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Author:</div>
+                    <div class='col-md-6'>{{book.Author}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Genre:</div>
+                    <div class='col-md-6'>{{book.Genre}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Price:</div>
+                    <div class='col-md-6'>{{book.price|currency:'DNT':true}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>5 Star Rating:</div>
+                    <div class='col-md-6'>
+                        <ai-star [Rating]='book.Rating'
+                                 (ratingClicked)='onRatingClicked($event)'>
+                        </ai-star>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-md-6'>
+                <img class='center-block img-responsive'
+                     [style.width.px]='200'
+                     [style.margin.px]='2'
+                     [src]='book.imageUrl'
+                     [title]='book.title'>
+            </div>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>

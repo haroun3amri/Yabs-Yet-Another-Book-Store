@@ -1,0 +1,44 @@
+
+<div class="col-lg-4" style="width: 100%;">
+    <div class="panel panel-yellow">
+        <div class="panel-heading">
+         <span class="glyphicon glyphicon-pencil"></span>   Your Porfile
+        </div>
+        <div class="panel-body" style="width: 100%;">
+            <div *ngIf="user">
+                <h2 class="page-header">{{user.name}}</h2>
+                <td style="width: 50%">
+
+                    <li class="list-group-item">FirstName: <b>{{user.username}}</b></li>
+
+
+                    <li class="list-group-item">LastName: <b>{{user.LastNale}}</b></li>
+
+
+                    <li class="list-group-item">Email: <b>{{user.email}}</b></li>
+
+                    <li class="list-group-item">BirthDate: <b>{{user.BirthDate}}</b></li>
+
+                    <li class="list-group-item">Country: <b>{{user.Countryl}}</b></li>
+                </td>
+                <td style="width: 50%">
+
+                    <li class="list-group-item">City: <b>{{user.City}}</b></li>
+
+                    <li class="list-group-item">Job: <b>{{user.Job}}</b></li>
+
+                    <li class="list-group-item">GSM: <b>{{user.GSM}}</b></li>
+
+                    <li class="list-group-item">Home Phone: <b>{{user.Phone}}</b></li>
+
+                    <li class="list-group-item">Zip Code: <b>{{user.ZipCode}}</b></li>
+                </td>
+
+            </div>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+    </div>
+    <!-- /.col-lg-4 -->
+</div>

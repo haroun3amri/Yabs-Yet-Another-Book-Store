@@ -1,0 +1,91 @@
+<div class='panel panel-primary'>
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+
+
+            <div class="col-md-2">Filter by: </div>
+            <div class="col-md-2">
+                <input type="text"
+                       [(ngModel)]='listFilter'
+                />
+
+
+            </div>
+            <div class="col-md-2">
+               Number of elements :
+            </div>
+            <div class="col-md-2">
+                <div class="huge"> {{carts.length}}</div>
+            </div>
+
+            <div class="col-md-2">
+                <button type="button" class=" btn-lg btn btn-warning"><span class="glyphicon glyphicon-share-alt	Try it"></span>Buy</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="display: inline-block">
+                <h3> Filtered by : {{listFilter}}</h3>
+
+
+            </div>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table"
+                   *ngIf='carts && carts.length'>
+                <thead>
+                <tr>
+                    <th>
+                        <button class="btn btn-primary"
+                                (click)='toggleImage()'>
+                            {{showImage ? 'Hide' : 'Show'}} Cover
+                        </button>
+                    </th>
+                    <th>Cart Owner</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th> 5 Star Rating</th>
+                    <th> Delete</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let cart of carts | bookFilter:listFilter'>
+
+                    <td>
+                        <img    *ngIf='showImage'
+                                [src]='cart.imageUrl'
+                                [title]='cart.title'
+                                [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'
+                        >
+                    </td>
+                    <td>{{cart.UserLogin}} </td>
+                    <td> <a [routerLink]="['/cart',cart.cartId]">{{cart.title}}</a></td>
+                    <td> {{cart.Author}}</td>
+                    <td> {{cart.Genre}}</td>
+                    <td> {{cart.price | currency : 'DNT':true:'1.2-2'}}</td>
+                    <td> <ai-star [Rating]='cart.Rating'
+                                  (ratingClicked)='onRatingClicked($event)'>
+
+                    </ai-star></td>
+<td>
+                    <input type="button" (click)="deleteCart(cart._id)" value="X" class="btn btn-primary btn-danger">
+</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<br>
+<br>

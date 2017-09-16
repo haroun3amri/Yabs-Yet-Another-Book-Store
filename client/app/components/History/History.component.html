@@ -1,0 +1,76 @@
+<div class='panel panel-primary'>
+    <div class="panel-heading">
+        {{pageTitle}}
+
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter by: </div>
+            <div class="col-md-2">
+                <input type="text"
+                       [(ngModel)]='listFilter'
+                />
+
+            </div>
+            <div class="col-md-2">
+                <div> Number Of elements : </div>
+            </div>
+            <div class="col-md-2">
+                <div class="huge"> {{histories.length}}  </div>
+            </div>
+            <div class="col-md-16">
+                <button type="button" class=" btn-lg btn btn-danger"><span class="glyphicon glyphicon-remove"></span>Clear All</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="display: inline-block">
+                <h3> Filtered by : {{listFilter}}</h3>
+
+
+            </div>
+
+        </div>
+        <div class="table-responsive">
+            <table class="table"
+                   *ngIf='histories && histories.length'>
+                <thead>
+                <tr>
+
+                    <th>book title</th>
+                    <th>book Author</th>
+                    <th>book Price</th>
+                    <th>Operation</th>
+                    <th>Date</th>
+                    <th>State</th>
+
+                    <th>
+                       <span class="glyphicon glyphicon-remove"></span>Delete
+                    </th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor='let history of histories | bookFilter:listFilter'>
+
+                    <td> <a [routerLink]="['/history',history._id]">{{history.booktitle}}</a></td>
+                    <td> {{history.bookAuthor}}</td>
+                    <td> {{history.bookPrice | currency : 'DNT':true:'1.2-2'}}</td>
+                    <td>{{history.Operation }}</td>
+                    <td>{{history.Date }}</td>
+                    <td>{{history.State }}</td>
+                    <td>
+                        <input type="button" (click)="deleteHist(history._id)" value="X" class="btn btn-primary btn-danger">
+
+                    </td>
+
+
+
+                </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

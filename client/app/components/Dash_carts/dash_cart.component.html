@@ -1,0 +1,225 @@
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Yabs Dashboard</a>
+        </div>
+        <!-- /.navbar-header -->
+
+
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a [routerLink]="['/Dashbook']"><i class="fa fa-book fa-fw"></i> All Available Books </a>
+                    </li>
+
+                    <li>
+                        <a [routerLink]="['/Dashcart']"><i class="fa fa-shopping-cart fa-fw"></i> All Available Charts</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-dashboard fa-fw"></i> activity Monitor</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-pie-chart fa-fw"></i> Statistics</a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+
+
+        <!-- /.row -->
+        <div class="row">
+            <head>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+                <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+                <script src="jquery-1.12.4.js"></script>
+                <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+            </head>
+            <body>
+
+            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Cover</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Cover</th>
+                    <th></th>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+
+                    <td>
+                        <input type="text"
+                               [(ngModel)]='title'
+                               name="title"
+                               class="form-control"
+                               placeholder="title"
+                        />
+                    </td>
+                    <td>
+                        <input type="text"
+                               [(ngModel)]='Author'
+                               name="Author"
+                               class="form-control"
+                               placeholder="Author"
+                        />
+                    </td>
+                    <td>
+
+                        <select [(ngModel)]='Genre'
+                                name="Genre"
+                                class="form-control"
+                                placeholder="Genre"
+                        >
+
+                            <option value="Science fiction">Science fiction</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Action">Action</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Self help">Self help</option>
+                            <option value="Health">Health</option>
+
+                            <option value="Guide">Guide</option>
+                            <option value="Travel">Travel</option>
+                            <option value="Children">Children</option>
+                            <option value="Religion">Religione</option>
+                            <option value="Science">Science</option>
+                            <option value="History">History</option>
+                            <option value="Poetry">Poetry</option>
+                            <option value="Dictionaries">Dictionaries</option>
+
+                            <option value="Autobiographies">Autobiographies</option>
+                            <option value="Biographies">Biographies</option>
+                            <option value="Journals">Journals</option>
+                            <option value="Cookbooks">Cookbooks</option>
+                            <option value="Comics">Comics</option>
+                            <option value="Dictionaries">Dictionaries</option>
+                            <option value="Encyclopedias">Encyclopedias</option>
+                            <option value="Art">Art</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number"
+                               [(ngModel)]='price'
+                               name="price"
+                               class="form-control"
+                               placeholder="Price"
+                        />
+                    </td>
+                    <td>
+                        <input type="number"
+                               [(ngModel)]='Rating'
+                               name="Rating"
+                               class="form-control"
+                               placeholder="Rating"
+                        />
+                    </td>
+                    <td>
+                        <input type="text"
+                               [(ngModel)]='imageUrl'
+                               name="imageUrl"
+                               class="form-control"
+                               placeholder="Cover URL"
+                        />
+                    </td>
+                    <td>
+                        <input type="button" (click)="addCart($event)" value="Add Cart" class="btn btn-primary btn-success">
+
+                    </td>
+                </tr>
+
+                <tr *ngFor='let cart of carts '>
+                    <td >
+                        {{cart.Author}}
+                    </td>
+                    <td>
+                        {{cart.Genre}}
+                    </td>
+                    <td>
+                        {{cart.price}} DNT
+                    </td>
+                    <td>
+                        {{cart.Rating}}
+                    </td>
+                    <td>
+                        link
+                    </td>
+                    <td>
+                        <input type="button" (click)="deleteCart(cart._id)" value="X" class="btn btn-primary btn-danger">
+
+
+                        <input type="button" (click)="deleteCart(cart._id)" value="E" class="btn btn-primary btn-info">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            </body>
+
+
+        </div>
+        <!-- /.row -->
+
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+
+
+</body>
+
+
